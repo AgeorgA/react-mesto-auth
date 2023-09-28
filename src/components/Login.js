@@ -47,7 +47,7 @@ const Login = ({ onLogin }) => {
           name="password"
           placeholder="Пароль"
         />
-        <button className="login__submit-btn" type="submit">
+        <button className="login__submit-button" type="submit">
           Войти
         </button>
       </form>

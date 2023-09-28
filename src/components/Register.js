@@ -48,7 +48,7 @@ const Register = ({ onRegister }) => {
           name="password"
           placeholder="Пароль"
         />
-        <button className="register__submit-btn" type="submit">
+        <button className="register__submit-button" type="submit">
           Зарегистрироваться
         </button>
       </form>

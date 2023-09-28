@@ -26,7 +26,7 @@ function App() {
   const [selectedCard, setSelectedCard] = useState(null);
   const [cards, setCards] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
-  const [regStatus, setRegStatus] = useState(false);
+  const [isSuccessInfoTooltipStatus, setIsSuccessInfoTooltipStatus] = useState(false);
   const [email, setEmail] = useState('');
   const [isInfoTooltipPopupOpen, setIsInfoTooltipPopupOpen] = useState(false);
 
@@ -40,8 +40,13 @@ function App() {
     navigate('/sign-up', { replace: true });
   }, [loggedIn]);
 
+  useEffect(() => {
+    handleTokenCheck();
+  }, []);
+
   const handleTokenCheck = () => {
-    if (localStorage.getItem('token')) {
+    const token = localStorage.getItem('token');
+    if (token) {
       const jwt = localStorage.getItem('token');
       auth
         .checkToken(jwt)
@@ -53,7 +58,6 @@ function App() {
           }
         })
         .catch(err => {
-          handleRegStatusClick(false);
           console.log(err);
         });
     }
@@ -136,7 +140,7 @@ function App() {
 
   function handleRegStatusClick(data) {
     setIsInfoTooltipPopupOpen(true);
-    setRegStatus(data);
+    setIsSuccessInfoTooltipStatus(data);
   }
 
   const closeAllPopups = () => {
@@ -241,7 +245,7 @@ function App() {
         {loggedIn && <Footer />}
 
         <InfoTooltip
-          regStatus={regStatus}
+          regStatus={isSuccessInfoTooltipStatus}
           isOpen={isInfoTooltipPopupOpen}
           onClose={closeAllPopups}
         />

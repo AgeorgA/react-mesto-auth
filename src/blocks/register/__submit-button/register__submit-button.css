@@ -1,4 +1,4 @@
-.register__submit-btn {
+.register__submit-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,13 +17,13 @@
   transition: 0.5s all;
 }
 
-.register__submit-btn:hover {
+.register__submit-button:hover {
   background-color: rgba(255, 255, 255, 0.6);
   transition: 0.5s;
 }
 
 @media screen and (max-width: 580px) {
-  .register__submit-btn {
+  .register__submit-button {
     max-height: 46px;
     font-size: 14px;
     line-height: 17px;
