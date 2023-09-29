@@ -47,13 +47,12 @@ function App() {
   const handleTokenCheck = () => {
     const token = localStorage.getItem('token');
     if (token) {
-      const jwt = localStorage.getItem('token');
       auth
-        .checkToken(jwt)
+        .checkToken(token)
         .then(data => {
           if (data) {
             setLoggedIn(true);
-            setEmail(data.email);
+            setEmail(data.data.email);
             navigate('/', { replace: true });
           }
         })
@@ -96,7 +95,7 @@ function App() {
   };
 
   const handleSignOut = () => {
-    localStorage.removeItem('jwt');
+    localStorage.removeItem('token');
     setLoggedIn(false);
     setEmail('');
     navigate('/sign-in', { replace: true });
